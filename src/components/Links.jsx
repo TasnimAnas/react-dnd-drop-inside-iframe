@@ -1,3 +1,4 @@
+import DropZone from "./DropZone";
 import LinkButton from "./LinkButton";
 
 const Links = () => {
@@ -15,18 +16,21 @@ const Links = () => {
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        height: "100%",
-        justifyContent: "center",
-      }}
-    >
-      {links.map((link, index) => (
-        <LinkButton key={index} link={link} />
-      ))}
+    <div>
+      <DropZone />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          height: "80%",
+          justifyContent: "center",
+        }}
+      >
+        {links.map((link, index) => (
+          <LinkButton key={index} link={link} />
+        ))}
+      </div>
     </div>
   );
 };

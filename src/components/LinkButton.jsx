@@ -10,8 +10,6 @@ const LinkButton = ({ link }) => {
       isDragging: !!monitor.isDragging(),
     }),
   }));
-
-  const dispatch = useDispatch();
   return (
     <div
       ref={drag}
@@ -21,9 +19,6 @@ const LinkButton = ({ link }) => {
         borderRadius: "5px",
         color: "white",
         cursor: "move",
-      }}
-      onClick={() => {
-        dispatch(updateLink(link));
       }}
     >
       {link}

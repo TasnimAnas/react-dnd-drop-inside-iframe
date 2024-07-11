@@ -1,4 +1,4 @@
-import { useDrop } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
 import { useDispatch } from "react-redux";
 import { updateLink } from "../features/IFrameLink/linkSlice";
 
@@ -13,6 +13,14 @@ const ContentReceiver = ({ children }) => {
       isOver: !!monitor.isOver(),
     }),
   }));
+
+  const [{}, drag] = useDrag(
+    () => ({
+      type: "INSIDE_BTN",
+      item: { outerLink: children },
+    }),
+    [children]
+  );
 
   return (
     <div
@@ -49,6 +57,21 @@ const ContentReceiver = ({ children }) => {
           Drop Here
         </div>
       )}
+
+      <div
+        ref={drag}
+        style={{
+          height: "100px",
+          width: "100px",
+          backgroundColor: "black",
+          color: "white",
+          borderRadius: "10px",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        Drag this
+      </div>
     </div>
   );
 };
